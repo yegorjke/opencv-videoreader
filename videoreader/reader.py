@@ -70,6 +70,18 @@ class Reader(AbstractReader):
         finally:
             self._cap = None
 
+    def __iter__(self):
+        self.activate()
+        return self
+
+    def __next__(self):
+        mat: np.ndarray = self.read()
+
+        if mat is None:
+            raise StopIteration
+
+        return mat
+
     def __enter__(self):
         self.activate()
         return self
