@@ -60,10 +60,7 @@ class Reader(AbstractReader):
     def read(self) -> Any:
         ret, mat = self._cap.read()
 
-        if not ret or mat is None:
-            raise
-
-        return mat  # if ret else None
+        return mat
 
     def _release(self) -> NoReturn:
         try:
